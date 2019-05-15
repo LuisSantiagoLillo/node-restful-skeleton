@@ -4,10 +4,8 @@ let responseService = require('../routesResponse/responseService')
 
 
 serverStatus = function(req, res) {
-    res.status(200).json({
-        ok: true,
-        message: 'Server Online on port ' + process.env.PORT
-    })
+    let message = 'Server Online on port ' + process.env.PORT
+    responseService.sendResponseOK(res, 200, message, null)
 }
 
 serverConfig = function(req, res) {
