@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "74f3772c-dbb1-40fd-afbd-a9d305da0973",
+		"name": "node-pro-skeleton",
+		"description": "Basis skeleton for projects in API Node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users Request",
+			"item": [
+				{
+					"name": "Send new user by POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "admin2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN_ROLE",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/newUser",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"newUser"
+							]
+						},
+						"description": "http://localhost:3000/newUser"
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "tupios",
+									"type": "text"
+								},
+								{
+									"key": "google",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/updateUserById/5cd66ebb653dd410b2576759",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"updateUserById",
+								"5cd66ebb653dd410b2576759"
+							]
+						},
+						"description": "http://localhost:3000/updateUserById/5cd66ebb653dd410b2576759"
+					},
+					"response": []
+				},
+				{
+					"name": "Returns all users from the DB with params from and limit",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/getAllUsers?from=2&limit=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllUsers"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						},
+						"description": "http://localhost:3000/getAllUsers?from=2&limit=3"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deleteUserById/5cd67f63cd83391739b99fd6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deleteUserById",
+								"5cd67f63cd83391739b99fd6"
+							]
+						},
+						"description": "http://localhost:3000/deleteUserById/5cd67f63cd83391739b99fd6"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder only for Users Request"
+		},
+		{
+			"name": "Server Request",
+			"item": [
+				{
+					"name": "Return the configuration of the server. Only for ADMIN ROLES",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/server-config",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"server-config"
+							]
+						},
+						"description": "http://localhost:3000/server-config"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Uploads Request",
+			"item": [
+				{
+					"name": "Upload Users simple file",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/upload/users/5cd6f92c2013fb1447b888ff",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"upload",
+								"users",
+								"5cd6f92c2013fb1447b888ff"
+							]
+						},
+						"description": "{{url}}/upload"
+					},
+					"response": []
+				},
+				{
+					"name": "Return image by type & id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/image/users/5cd67f5dcd83391739b99fd5-466.jpg?token={{token}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"image",
+								"users",
+								"5cd67f5dcd83391739b99fd5-466.jpg"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						},
+						"description": "{{url}}/image/type/foto"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login Request",
+			"item": [
+				{
+					"name": "Login App with JWT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4860cf40-5ed3-4b8d-9a6f-516f59695fa9",
+								"exec": [
+									"",
+									"let resp = pm.response.json();",
+									"if(resp.ok) {",
+									"    let token = resp.token",
+									"    pm.environment.set(\"token\", token);",
+									"} else {",
+									"    console.log('Token not updated')",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "http://localhost:3000/login"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
