@@ -59,17 +59,10 @@ updateUser = function(req, res) {
     User.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userDB) => {
 
         if (err) {
-            return res.status(400).json({
-                ok: false,
-                err
-            });
+            responseService.sendResponseNOTOK(res, 400, 'connection error with DataBase', err, null)
         }
 
-        res.json({
-            ok: true,
-            usuario: userDB
-        });
-
+        responseService.sendResponseOK(res, 200, 'user founded', userDB)
     })
 }
 
@@ -86,26 +79,14 @@ deleteUserById = function(req, res) {
     User.findByIdAndUpdate(id, changeStatus, { new: true }, (err, userDeleted) => {
 
         if (err) {
-            return res.status(400).json({
-                ok: false,
-                err
-            });
+            responseService.sendResponseNOTOK(res, 400, 'connection error with DataBase', err, null)
         };
 
         if (!userDeleted) {
-            return res.status(400).json({
-                ok: false,
-                err: {
-                    message: 'User not found'
-                }
-            });
+            responseService.sendResponseNOTOK(res, 400, 'User not found', null, null)
         }
 
-        res.json({
-            ok: true,
-            usuario: userDeleted
-        });
-
+        responseService.sendResponseOK(res, 200, 'User deleted', userDeleted)
     });
 
 }
